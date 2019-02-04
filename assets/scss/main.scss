@@ -1,0 +1,46 @@
+@import "_partials/vars";
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+section {
+    position: relative;
+    width: 100%;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    .navbar {
+        background: transparent;
+        color: wheat;
+    }
+}
+
+.landingPage {
+    height: 100vh;
+    width: 100vw;
+    background: rgb(10,20,24);
+    .sideImage {
+        .imageHolder {
+            width: 100%;
+            object-fit: contain;
+            height: 100%;
+            animation: bounce 5s linear .2s infinite;
+        }
+    }
+}
+.footer {
+    padding: 10px;
+    text-align: center;
+    span {
+        font-size: 13px;
+        font-weight: lighter;
+    }
+}
