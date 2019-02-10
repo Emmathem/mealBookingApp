@@ -187,33 +187,26 @@ $slide: (
   }
 }
 
-@mixin smallButtons() {
+@mixin roundedButtons() {
   .btn {
-    padding: .4em 1em;
-    border-width: 0;
+    padding: .9em 2.5em;
     outline: none;
-    border-radius: 2px;
-    margin-right: 20px;
+    border-radius: 50px;
+    margin-right: 10px;
     font-weight: 200;
   }
-  .btn-update {
-    color: $theme-white;
-    background: $theme-black;
-    border-bottom-width: 3px;
-    border-color: $theme-gold;
-    &:hover {
-      border-color: $theme-black;
-      @include transition(0.5s);
-    }
+  .btn-started {
+    background: $theme-white;
+    color: $food_color;
   }
-  .btn-cart-add {
-    color: $theme-white;
-    background: $theme-gold;
-    border-bottom-width: 3px;
-    border-color: $theme-black;
+  .btn-caterer {
+    @include borderLine($food_color);
+    background: transparent;
+    color: $food_color;
     &:hover {
-      border-color: $theme-gold;
-      @include transition(0.5s);
+      background: $food_color;
+      color: $theme-white;
+      border: none;
     }
   }
 }
@@ -264,47 +257,5 @@ $slide: (
       @include borderLine(rgba($theme-black, .4));
       @include transition(0.5s);
     }
-  }
-}
-
-@mixin roundButtons {
-  .btn {
-    padding: .51em 2em;
-    //border-radius: 50px;
-    outline: 0;
-    border: none;
-    @include boxShadow(0, 2px, 3px, $shadowBlack);
-    //transition-property: bottom, box-shadow;
-    &:hover {
-      @include transition(0.5s);
-      @include noBoxShadow(none);
-      @include borderLine(rgba($theme-black, .2));
-      background: $theme-black;
-      color: $theme-white;
-      font-weight: lighter;
-      //bottom: 6px;
-      //background: lighten($theme-black, 25%);
-    }
-  }
-  .btn-shopping {
-    background: $theme-gold;
-    color: $theme-white;
-  }
-  .btn-sell {
-    background: $theme-white;
-    color: $theme-gold !important;
-  }
-  .btn-cat {
-    background: $theme-black;
-    color: $theme-white;
-    @include transition(0.4s);
-    &:hover {
-      background: $theme-white;
-      color: $theme-black;
-    }
-  }
-  .btn-sub-f {
-    background: $theme-black;
-    color: $theme-white;
   }
 }
