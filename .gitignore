@@ -1,2 +1,7 @@
 *.DS_Store
 *.css.map
+.idea/inspectionProfiles/
+.idea/mealBookingApp.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml

@@ -1,46 +1,91 @@
 @import "_partials/vars";
+@import "_partials/mixins";
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
+
 section {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .header {
-    position: absolute;
-    width: 100%;
-    z-index: 1;
-    .navbar {
-        background: transparent;
-        color: wheat;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  background: rgb(25, 25, 36);
+  nav {
+    @include borderLine($theme-white);
+    padding: 2px;
+    overflow: hidden;
+    width: auto;
+  }
+  .brand-name {
+    margin: 0;
+    padding: 0 10px 0;
+    h2 {
+      font-size: 1em;
+      font-weight: lighter;
+      color: $food_color;
     }
+  }
+  .navbar {
+    background: transparent;
+    ul {
+      overflow: hidden;
+      list-style: none;
+    }
+    li a {
+      float: left;
+    }
+  }
 }
 
 .landingPage {
-    height: 100vh;
-    width: 100vw;
-    background: rgb(10,20,24);
-    .sideImage {
-        .imageHolder {
-            width: 100%;
-            object-fit: contain;
-            height: 100%;
-            animation: bounce 5s linear .2s infinite;
-        }
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(70deg, #000, #222);
+  .sideImage {
+    .imageHolder {
+      width: 100%;
+      object-fit: contain;
+      height: 100%;
+      animation: bounce 5s linear .2s infinite;
     }
-}
-.footer {
-    padding: 10px;
+  }
+  .welcome-section {
+    padding: 12em 10px;
     text-align: center;
-    span {
-        font-size: 13px;
-        font-weight: lighter;
+    h3 {
+      font-size: 4em;
+      font-weight: bold;
+      color: $food_color;
+      margin-bottom: 0;
     }
+    span {
+      display: block;
+      font-size: 1em;
+      margin-top: 0;
+      text-transform: uppercase;
+      font-weight: lighter;
+      color: $theme-white;
+    }
+  }
 }
+
+footer {
+  padding: 10px;
+  text-align: center;
+  span {
+    font-size: 13px;
+    font-weight: lighter;
+  }
+}
+
+@import "_partials/grid";

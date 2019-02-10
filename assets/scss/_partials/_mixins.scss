@@ -1,0 +1,310 @@
+/**
+ * Mixins file
+ * Developed By Falua Temitope Oyewole
+ * 17th September, 2018
+ */
+
+@mixin transition($speed) {
+  -webkit-transition: ease all $speed;
+  -moz-transition: ease all $speed;
+  -ms-transition: ease all $speed;
+  -o-transition: ease all $speed;
+  transition: ease all $speed;
+}
+
+@mixin borderLine($color) {
+  border: 1px solid $color;
+}
+
+@mixin boxShadow($a, $b, $blur, $color) {
+  -webkit-box-shadow: $a $b $blur $color;
+  -moz-box-shadow: $a $b $blur $color;
+  -o-box-shadow: $a $b $blur $color;
+  box-shadow: $a $b $blur $color;
+}
+
+@mixin boxFullShadow($s, $d, $blur, $spread, $color) {
+  -webkit-box-shadow: $s $d $blur $spread $color;
+  -moz-box-shadow: $s $d $blur $spread $color;
+  -o-box-shadow: $s $d $blur $spread $color;
+  box-shadow: $s $d $blur $spread $color;
+}
+
+@mixin noBoxShadow($val) {
+  -webkit-box-shadow: $val;
+  -moz-box-shadow: $val;
+  -o-box-shadow: $val;
+  box-shadow: $val;
+}
+
+@mixin animationSlide($name, $delay) {
+  -webkit-animation: $name $delay;
+  -o-animation: $name $delay;
+  animation: $name $delay;
+}
+
+@mixin clientSlide() {
+  //@for $i
+}
+
+@mixin perspective($val) {
+  -webkit-perspective: $val;
+  -moz-perspective: $val;
+  -o-perspective: $val;
+  perspective: $val;
+}
+
+@mixin transformStyle() {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+@mixin transformX() {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+
+@mixin backface() {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@mixin transformNew() {
+  -webkit-transition: -webkit-transform 0.4s;
+  -moz-transition: -moz-transform 0.4s;
+  -o-transition: -o-transform 0.4s;
+  transition: transform 0.4s;
+}
+
+//Define the images as variable
+$slide: (
+        url('../../../../public/img/img13.jpg'),
+        url('../../../../public/img/img04.gif'),
+        url('../../../../public/img/img05.jpg'),
+        url('../../../../public/img/img06.jpg'),
+        url('../../../../public/img/buyerafrica.jpeg')
+);
+
+@mixin addImagesToSlide($divName, $image) {
+  @for $i from 1 through length($image) {
+    .#{$divName}#{$i} {
+      background: nth($image, $i) no-repeat center;
+    }
+  }
+}
+
+@mixin specialButtons() {
+  .btn {
+    //padding: .6em 1em;
+    //border-width: 0;
+    font-weight: 400;
+    padding: .6em 2em;
+    outline: none;
+    @include borderLine($theme-black);
+    border-radius: 0;
+  }
+  .btn-update {
+    color: $theme-black;
+    background: $theme-white;
+    &:hover {
+      color: $theme-white;
+      background: $theme-black;
+      border: none;
+      //@include transition(0.5s);
+    }
+  }
+  .btn-prev, .btn-cart-add {
+    color: $theme-black;
+    background: $theme-white;
+    &:hover {
+      color: $theme-white;
+      background: $theme-black;
+      border: none;
+      //@include transition(0.5s);
+    }
+  }
+  .btn-doneAccept {
+    color: $theme-black;
+    background: $theme-white;
+    &:hover {
+      color: $theme-white;
+      background: $theme-black;
+      border: none;
+      @include transition(0.5s);
+    }
+  }
+  .btn-reject {
+    color: $theme-red;
+    background: $theme-white;
+    margin: 0 20px;
+    border-bottom-width: 3px;
+    border-color: $theme-black;
+    @include borderLine($theme-black);
+    &:hover {
+      border-color: $theme-black;
+      @include boxShadow(0, 1px, 3px, $theme-black);
+      @include transition(0.5s);
+    }
+  }
+  .btn-custom {
+    @extend .btn-doneAccept;
+  }
+  .btn-follow, .btn-help {
+    @extend .btn-prev;
+    h5 {
+      position: relative;
+      @include transition(0.5s);
+      cursor: pointer;
+      &:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+      }
+    }
+    &:hover {
+      h5 {
+        padding-right: 25px;
+        &:after {
+          opacity: 1;
+          right: 0;
+        }
+      }
+    }
+  }
+  .btn-help {
+    @extend .btn-prev;
+    &:hover {
+      @include borderLine($theme-gold);
+    }
+  }
+}
+
+@mixin smallButtons() {
+  .btn {
+    padding: .4em 1em;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    margin-right: 20px;
+    font-weight: 200;
+  }
+  .btn-update {
+    color: $theme-white;
+    background: $theme-black;
+    border-bottom-width: 3px;
+    border-color: $theme-gold;
+    &:hover {
+      border-color: $theme-black;
+      @include transition(0.5s);
+    }
+  }
+  .btn-cart-add {
+    color: $theme-white;
+    background: $theme-gold;
+    border-bottom-width: 3px;
+    border-color: $theme-black;
+    &:hover {
+      border-color: $theme-gold;
+      @include transition(0.5s);
+    }
+  }
+}
+
+@mixin hashTags() {
+  ul {
+    overflow: hidden;
+    list-style: none;
+  }
+  li a {
+    float: left;
+    background: linear-gradient(230deg, #999, #111);
+    padding: .5em .91em;
+    margin: 0 10px 10px 0;
+    font-size: 14px;
+    color: $theme-white;
+    border-radius: 4px;
+    &:nth-child(even) {
+      background: linear-gradient(30deg, #111, #999);
+    }
+    &:hover {
+      background: lighten($theme-black, 5%);
+      @include transition(0.5s);
+    }
+  }
+}
+
+@mixin hashTagSide() {
+  ul {
+    overflow: hidden;
+    list-style: none;
+    padding-left: 10px;
+  }
+  li a {
+    float: left;
+    background:  $theme-white;
+    @include boxShadow($shadowBlack, 2px, 1px, 3px);
+    padding: .4em .81em;
+    margin: 0 10px 10px 0;
+    font-size: 14px;
+    border-radius: 4px;
+    &:nth-child(even) {
+      background: linear-gradient(30deg, #111, #999);
+    }
+    &:hover {
+      @include noBoxShadow(none);
+      background: none;
+      @include borderLine(rgba($theme-black, .4));
+      @include transition(0.5s);
+    }
+  }
+}
+
+@mixin roundButtons {
+  .btn {
+    padding: .51em 2em;
+    //border-radius: 50px;
+    outline: 0;
+    border: none;
+    @include boxShadow(0, 2px, 3px, $shadowBlack);
+    //transition-property: bottom, box-shadow;
+    &:hover {
+      @include transition(0.5s);
+      @include noBoxShadow(none);
+      @include borderLine(rgba($theme-black, .2));
+      background: $theme-black;
+      color: $theme-white;
+      font-weight: lighter;
+      //bottom: 6px;
+      //background: lighten($theme-black, 25%);
+    }
+  }
+  .btn-shopping {
+    background: $theme-gold;
+    color: $theme-white;
+  }
+  .btn-sell {
+    background: $theme-white;
+    color: $theme-gold !important;
+  }
+  .btn-cat {
+    background: $theme-black;
+    color: $theme-white;
+    @include transition(0.4s);
+    &:hover {
+      background: $theme-white;
+      color: $theme-black;
+    }
+  }
+  .btn-sub-f {
+    background: $theme-black;
+    color: $theme-white;
+  }
+}
